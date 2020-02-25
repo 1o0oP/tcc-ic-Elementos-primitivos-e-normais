@@ -1,0 +1,166 @@
+% Formato do documento
+\documentclass[12pt,twoside]{article}
+
+% Pacotes sendo utilizados
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{bezier}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{kpfonts}
+\usepackage{cite}
+\usepackage{lipsum}
+\usepackage{enumerate}
+\usepackage{longtable}
+\usepackage{hhline}
+\usepackage[usenames]{color}
+\usepackage{indentfirst}
+\usepackage{newlfont}
+\usepackage[all]{xy}
+\usepackage{setspace}
+\usepackage[nottoc, notindex]{tocbibind}
+\usepackage{pdfpages}
+\usepackage{stmaryrd}
+\usepackage{eso-pic}
+
+% Especificações métricas do texto
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+    bottom=2cm
+}
+% Indentação do texto
+\setlength{\parindent}{1.25cm}
+
+% Faz o "content" ser mencionado como "Sumário"
+\renewcommand{\contentsname}{Sumário}
+
+% Criando títulos indexados
+\newtheorem{lema}{Lema}[section]
+\newtheorem{obs}{Observação}[section]
+\newtheorem{teo}{Teorema}[section]
+
+% Início do conteúdo
+\begin{document}
+  \setstretch{1.5} % Espaçamento entre linhas
+  \pagenumbering{gobble} % Cancela a paginação por enquanto
+
+  % Capa do trabalho
+  \begin{titlepage}
+    \begin{center}
+      \parbox{3.5cm}{\includegraphics[scale=0.1]{logo_ufu.png}} \\
+      \vspace{1cm}
+      {\Large \bf UNIVERSIDADE FEDERAL DE UBERLÂNDIA}
+      {\large \bf Bacharelado em Matemática} \\
+      \vspace{2cm}
+      {\large Luís Henrique da Silva Pinheiro} \\
+      \vspace{3cm}
+      {\Large \bf Relatório parcial do trabalho:} \\
+      {\large \it Elementos primitivos e normais sobre corpos finitos} \\
+      \vspace{8cm}
+      {UBERLÂNDIA \\ Fevereiro de 2020}
+    \end{center}
+  \end{titlepage}
+
+  \tableofcontents % Cria o sumário
+  \thispagestyle{empty} % Retira o estilo padrão do sumário
+  \newpage % Quebra a página
+
+  \pagenumbering{arabic} % Começa a enumerar as páginas
+
+  % Primeira seção: Introdução
+  \section{Introdução}
+    % Primeiro parágrafo
+    A teoria dos corpos finitos é um ramo da matemática que veio a tona nos
+    últimos cinquenta anos por causa de suas diversas aplicações em vários segmentos
+    da ciência, entre eles, análise combinatória, teoria dos códigos, criptografia, entre
+    outros. Muitas figuras proeminentes na história da matemática contribuíram para o
+    desenvolvimento desta teoria, entre eles podemos citar: Pierre de Fermat (1601-
+    1665); Leonhard Euler (1707-1783); Joseph-Louis Lagrange (1736-1813); AndrienMarie Legendre (1752-1833); entre outros. Além disso, segundo R. Lidil e H.
+    Niederreiter, autores de uma das referências que utilizaremos \cite{finite-fields-1997}, tal teoria começou
+    com os trabalhos de Carl Friedrich Gauss (1777-1855) e Evariste Galois (1811-
+    1832), contudo, só veio a se tornar interessante para os matemáticos aplicados nas
+    últimas décadas.
+
+    % Segundo parágrafo
+    Para que se possa entender melhor este tema, explicaremos aqui mesmo, de
+    forma breve, o significado destes conceitos. Começamos com a definição de corpo
+    finito, este é qualquer coleção finita e não vazia de elementos, munida de duas
+    operações binárias entre esses elementos, uma que se comporta como a adição, e
+    outra que se comporta como a multiplicação, e quando falamos adição e
+    multiplicação estamos nos referindo àquelas definidas entre números reais. Veremos
+    no decorrer do trabalho, por exemplo, que se retirarmos de um corpo finito, o
+    elemento neutro da adição, os elementos que sobram formam um grupo cíclico com
+    a multiplicação, interessante não? Consequentemente, como todo grupo cíclico, ele
+    passa a ter um gerador deste grupo. Ora, estes elementos, geradores destes grupos
+    assim formados, é exatamente o que chamamos de 'elementos primitivos'. Já a
+    definição de 'elemento normal' é um pouquinho mais elaborada. Primeiro,
+    começamos com um corpo finito de característica p, com q elementos (q é um
+    natural não nulo). Veremos também que p deverá ser um número natural primo, e
+    que o fato de p ser a característica deste corpo implica que a cardinalidade q deverá
+    ser uma potência de p. Levando isso em conta, escolha um natural não nulo n, e
+    considere uma extensão F de grau n do corpo inicial. Da teoria de corpos finitos
+    sabemos que esta extensão é um corpo que contém o primeiro, e que pode ser visto
+    como um espaço vetorial de dimensão n (finita) sobre ele, é para a base deste
+    espaço que olharemos agora. Um elemento x do corpo F é chamado 'elemento normal' quando o conjunto $\{ \ x \ , \ x^{q} \ , \ x^{q^{2}} \ , \ ... \ , \ x^{q^{n-1}} \ \}$ é uma base para este espaço
+    vetorial, estas bases assim formadas são chamadas bases normais sobre corpos
+    finitos. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Não está sendo preciso quebrar página aqui
+  
+  % Segunda seção: Objetivos e Relevância  
+  \section{Objetivos e Relevância}
+    % Primeiro parágrafo
+    Nossos objetivos neste trabalho são, primeiramente, através da referência \cite[Finite fields]{finite-fields-1997}, 
+    explorar a teoria de corpos finitos com foco no estudo dos elementos primitivos e normais, passando
+    pelos principais conceitos e teoremas que envolvem este tema, como por exemplo, a
+    estrutura de corpos finitos, polinômios sobre corpos finitos, somas exponenciais (de
+    Gauss, de Jacobi) e então, com suporte, trazer uma seção inteira dedicada aos
+    elementos primitivos e normais sobre corpos finitos (Caracterização, Cardinalidades,
+    Ações, etc ...). Nesse primeiro ponto as referências \cite[Tópicos de álgebra]{topicos-de-algebra-1970} 
+    e \cite[Abstract algebra]{abstract-algebra-2007} serão usadas como um complemento à referência principal citada no início.
+    Em seguida, com o intuito de obter maior aprofundamento, voltar esforços para o avanço na direção dos quatro 
+    artigos \cite[Primitive normal bases for finite fields]{article-1987}, 
+    \cite[Pairs of primitive elements in fields of even order]{article-2014},
+    \cite[Existence of some special primitive normal elements over finite fields]{article-2017} e 
+    \cite[On primitive normal elements over finite fields]{article-2018} conforme o tempo permitir.
+    E por fim, desenvolveremos um texto matemático respeitando os padrões lógico-formais de linguagem que apresente 
+    os estudos realizados de forma sucinta e agradável a leitores a nível de graduação.
+
+    % Segundo parágrafo
+    O interesse de bases normais sobre corpos finitos decorre tanto da
+    curiosidade puramente matemática quanto das aplicações práticas. Com o
+    desenvolvimento da teoria de codificação e o surgimento de vários sistemas
+    criptográficos utilizando corpos finitos, o trabalho nesta área resultou em vários
+    projetos de implementação de hardware's e software's. Estes produtos são
+    baseados em esquemas de multiplicação usando bases normais para representar
+    corpos finitos, assim é necessário desenvolver uma aritmética de corpos finitos para
+    que se possa construir os algorítimos apropriados. É claro que as vantagens de se
+    utilizar uma representação de base normal são conhecidas há muitos anos. A
+    complexidade do desenho de hardware de tais esquemas de multiplicação é
+    fortemente dependente da escolha das bases normais usadas. Por isso, é essencial
+    encontrar bases normais de baixa complexidade. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    \newpage % Quebra a página
+
+  % Página de referências
+  \pagenumbering{gobble} % Aborta a paginação
+  \bibliographystyle{ieeetr} % Configura a forma como vai aparecer as referências
+  \bibliography{referencia} % Acessa o arquivo remoto referencia.bib
+  \thispagestyle{empty} % Elimina estilo padrão da página de referências
+
+\end{document}
