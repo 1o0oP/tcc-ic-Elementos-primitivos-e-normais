@@ -68,7 +68,7 @@
       {\large Luís Henrique da Silva Pinheiro} \\
       \vspace{3cm}
       {\Large \bf Relatório parcial do trabalho:} \\
-      {\large \it Elementos primitivos e normais sobre corpos finitos} \\
+      {\large \it Elementos primitivos e normais em corpos finitos} \\
       \vspace{8cm}
       {UBERLÂNDIA \\ Fevereiro de 2020}
     \end{center}
@@ -80,21 +80,27 @@
 
   \pagenumbering{arabic} % Começa a enumerar as páginas
 
-  % Primeira seção: Introdução
+  % Seção: Introdução ao tema
   \section*{Introdução}
-    % Primeiro parágrafo
+    % Primeiro parágrafo: Introdução ao assunto
     A teoria dos corpos finitos é um ramo da matemática que veio a tona nos
     últimos cinquenta anos por causa de suas diversas aplicações em vários segmentos
     da ciência, entre eles, análise combinatória, teoria dos códigos, criptografia, entre
     outros. Muitas figuras proeminentes na história da matemática contribuíram para o
     desenvolvimento desta teoria, entre eles podemos citar: Pierre de Fermat (1601-
-    1665); Leonhard Euler (1707-1783); Joseph-Louis Lagrange (1736-1813); AndrienMarie Legendre (1752-1833); entre outros. Além disso, segundo R. Lidil e H.
+    1665); Leonhard Euler (1707-1783); Joseph-Louis Lagrange (1736-1813); AndrienMarie Legendre (1752-1833); 
+    entre outros. Além disso, segundo R. Lidil e H.
     Niederreiter, autores de uma das referências que utilizaremos \cite{finite-fields-1997}, tal teoria começou
     com os trabalhos de Carl Friedrich Gauss (1777-1855) e Evariste Galois (1811-
     1832), contudo, só veio a se tornar interessante para os matemáticos aplicados nas
-    últimas décadas.
+    últimas décadas. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Não está sendo preciso quebrar página aqui
 
-    % Segundo parágrafo
+  % Seção: Conceitos principais
+  \section*{Conceitos principais}
+    % Segundo parágrafo: Introdução aos conceitos
     Para que se possa entender melhor este tema, explicaremos aqui mesmo, de
     forma breve, o significado destes conceitos. Começamos com a definição de corpo
     finito, este é qualquer coleção finita e não vazia de elementos, munida de duas
@@ -114,33 +120,17 @@
     considere uma extensão F de grau n do corpo inicial. Da teoria de corpos finitos
     sabemos que esta extensão é um corpo que contém o primeiro, e que pode ser visto
     como um espaço vetorial de dimensão n (finita) sobre ele, é para a base deste
-    espaço que olharemos agora. Um elemento x do corpo F é chamado 'elemento normal' quando o conjunto $\{ \ x \ , \ x^{q} \ , \ x^{q^{2}} \ , \ ... \ , \ x^{q^{n-1}} \ \}$ é uma base para este espaço
-    vetorial, estas bases assim formadas são chamadas bases normais sobre corpos
-    finitos. \\
+    espaço que olharemos agora. Um elemento x do corpo F é chamado 'elemento normal' quando o 
+    conjunto $\{ \ x \ , \ x^{q} \ , \ x^{q^{2}} \ , \ ... \ , \ x^{q^{n-1}} \ \}$ é uma base 
+    para este espaço vetorial, estas bases assim formadas são chamadas bases 
+    normais sobre corpos finitos. \\
     %------------------------------------------------------------------------------------------------------------------
     
-    %\newpage % Não está sendo preciso quebrar página aqui
-  
-  % Segunda seção: Objetivos e Relevância  
-  \section*{Objetivos e Relevância}
-    % Primeiro parágrafo
-    Nossos objetivos neste trabalho são, primeiramente, através da referência \cite[Finite fields]{finite-fields-1997}, 
-    explorar a teoria de corpos finitos com foco no estudo dos elementos primitivos e normais, passando
-    pelos principais conceitos e teoremas que envolvem este tema, como por exemplo, a
-    estrutura de corpos finitos, polinômios sobre corpos finitos, somas exponenciais (de
-    Gauss, de Jacobi) e então, com suporte, trazer uma seção inteira dedicada aos
-    elementos primitivos e normais sobre corpos finitos (Caracterização, Cardinalidades,
-    Ações, etc ...). Nesse primeiro ponto as referências \cite[Tópicos de álgebra]{topicos-de-algebra-1970} 
-    e \cite[Abstract algebra]{abstract-algebra-2007} serão usadas como um complemento à referência principal citada no início.
-    Em seguida, com o intuito de obter maior aprofundamento, voltar esforços para o avanço na direção dos quatro 
-    artigos \cite[Primitive normal bases for finite fields]{article-1987}, 
-    \cite[Pairs of primitive elements in fields of even order]{article-2014},
-    \cite[Existence of some special primitive normal elements over finite fields]{article-2017} e 
-    \cite[On primitive normal elements over finite fields]{article-2018} conforme o tempo permitir.
-    E por fim, desenvolveremos um texto matemático respeitando os padrões lógico-formais de linguagem que apresente 
-    os estudos realizados de forma sucinta e agradável a leitores a nível de graduação.
+    %\newpage % Quebra a página
 
-    % Segundo parágrafo
+  % Seção: Relevância
+  \section*{Relevância}
+    % Primeiro parágrafo: Relevância
     O interesse de bases normais sobre corpos finitos decorre tanto da
     curiosidade puramente matemática quanto das aplicações práticas. Com o
     desenvolvimento da teoria de codificação e o surgimento de vários sistemas
@@ -155,7 +145,63 @@
     encontrar bases normais de baixa complexidade. \\
     %------------------------------------------------------------------------------------------------------------------
     
-    \newpage % Quebra a página
+    %\newpage % Quebra a página
+
+  % Terceira seção: Objetivos
+  \section*{Objetivos}
+    % Primeiro parágrafo: Objetivos
+    O objetivo por trás deste trabalho é, em primeiro lugar, permitir que o estudante do curso de
+    bacharelado em matemática, inscrito para realizar este trabalho, através de leitura, reflexão, resolução
+    de exercícios, discussão com orientador e produção de texto lógico formal, se aprofunde no
+    desenvolvimento de suas habilidades de pesquisa e autonomia para se tornar mais apto a seguir
+    carreira acadêmica, já que este é seu intento. E em segundo lugar, mas não menos importante, criar
+    um texto matemático que apresente o tema de forma agradável, apresentando um breve esboço da
+    teoria dos corpos finitos, e mostrando como ela pode ser acessível a estudantes a nível de graduação,
+    e como ela pode ser aplicada para tratar de elementos primitivos e normais. Em terceiro lugar, uma
+    vez que o aluno adquira certa maturidade no tema de estudo, possa colaborar nos projetos nos quais
+    o orientador esteja trabalhando no momento.\\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Quarta seção: Metodologia  
+  \section*{Metodologia}
+    % Primeiro parágrafo: Metodologia
+    O aluno estudará a estrutura de corpos finitos, polinômios sobre corpos finitos e somas
+    exponenciais utilizando como referência o texto \cite[Finite fields]{finite-fields-1997} e como livros 
+    de apoio os textos \cite[Abstract algebra]{abstract-algebra-2007} e \cite[Tópicos de álgebra]{topicos-de-algebra-1970}. 
+    O aluno apresentará semanalmente um seminário de uma hora com o material estudado durante a semana.
+    Elementos primitivos e normais serão estudados a partir dos artigos de referências \cite{article-1987}, 
+    \cite{article-2014}, \cite{article-2017} e \cite{article-2018}.
+    Além disso serão realizadas reuniões semanais de uma hora com o orientador para esclarecer dúvidas
+    do aluno. Nos últimos meses da orientação o aluno irá participar dos projetos de pesquisa nos quais
+    o orientador estará trabalhando. Serão também realizadas revisões bibliográficas para acrescentar
+    conhecimentos atualizados. Mensalmente o aluno irá apresentar os resultados básicos a alunos de
+    graduação que estudam temas similares. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Quinta seção: Avanço até aqui  
+  \section*{Avanço do trabalho até aqui}
+    % Primeiro parágrafo: Avanço até aqui
+    Até o presente momento o aluno avançou nos estudos seguindo o cronograma proposto, estudou o primeiro capítulo:
+    Estrutura de corpos finitos, dentro do qual viu os tópicos: Caracterização dos corpos finitos, Raízes de polinômios
+    irredutíveis, Traços, normas e bases, Raízes da unidade e polinômios ciclotômicos, Representação de elementos de
+    corpos finitos e Teorema de Wedderburn. E também, o segundo capítulo: Polinômios sobre corpos finitos, onde viu os 
+    tópicos: Ordem de polinômios e polinômios primitivos, Polinômios irredutíveis, Construção de polinômios irredutíveis,
+    Polinômios linearizados e Binômios e trinômios. Tendo cumprido portanto, aproximadamente $ 50\% $ do cronograma.
+    
+    % Segundo parágrafo: Próximos passos
+    A partir daqui o aluno continuará seguindo com o cronograma, o próximo capítulo a ser estudado será: Somas exponenciais,
+    dentro do qual verá os tópicos: Caracteres, Somas de Gauss, Somas de Jacobi e Soma de caracteres com argumentos
+    polinomiais. Em seguida, verá o capítulo: Elementos primitivos e normais, no qual passará por: Caracterização de
+    elementos primitivos, Número de elementos primitivos em corpos finitos, Ação do anel de polinômios sobre um corpo
+    finito, Caracterização de elementos normais e Número de elementos normais em corpos finitos. E por fim passará para
+    as conclusões do trabalho, reunindo todos os conhecimentos e iniciando uma breve exploração do artigos citados. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
 
   % Página de referências
   \pagenumbering{gobble} % Aborta a paginação
