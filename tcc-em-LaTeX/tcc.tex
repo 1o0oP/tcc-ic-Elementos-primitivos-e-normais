@@ -1,0 +1,110 @@
+\documentclass[12pt,twoside]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{bezier}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{kpfonts}
+\usepackage{cite}
+\usepackage{lipsum}
+\usepackage{enumerate}
+\usepackage{longtable}
+\usepackage{hhline}
+\usepackage[usenames]{color}
+\usepackage{indentfirst}
+\usepackage{newlfont}
+\usepackage[all]{xy}
+\usepackage{setspace}
+\usepackage[nottoc, notindex]{tocbibind}
+\usepackage{pdfpages}
+\usepackage{stmaryrd}
+\usepackage{eso-pic}
+
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+    bottom=2cm
+}
+
+\newtheorem{lema}{Lema}[section]
+\newtheorem{obs}{Observação}[section]
+\newtheorem{teo}{Teorema}[section]
+
+\setlength{\parindent}{1.25cm} %Indenta o parágrafo
+
+\renewcommand{\contentsname}{Sumário}
+
+\begin{document}
+
+    \setstretch{1.5} % Espaçamento entre linhas
+    \pagenumbering{gobble}
+    
+    \begin{titlepage}
+        \begin{center}
+            \parbox{3.5cm}{\includegraphics[scale=0.1]{logo_ufu.png}} \\
+            \vspace{1cm}
+            {\Large \bf UNIVERSIDADE FEDERAL DE UBERLÂNDIA}
+            {\large \bf Bacharelado em Matemática} \\
+            \vspace{2cm}
+            {\large Luís Henrique da Silva Pinheiro} \\
+            \vspace{3cm}
+            {\Large \bf Título do trabalho} \\
+            {\large \it subtítulo do trabalho} \\
+            \vspace{8cm}
+            {UBERLÂNDIA \\ Mês e Ano}
+        \end{center}
+    \end{titlepage}
+    
+    \tableofcontents
+    \thispagestyle{empty}
+    \newpage
+    
+    \pagenumbering{arabic}
+    
+    \section{Introdução}
+        \cite{carothers} \cite{cariello}
+        \lipsum[1] \\
+        ------------------------------------------------------------------------------------------------------------------
+        
+        \newpage
+        
+    \section{Desenvolvimento}
+        \lipsum[1]
+        
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[scale=0.5]{funcao_distancia.png}
+            \caption{\it Gráfico da função distância ao inteiro mais próximo}
+            \label{fig:my_label}
+        \end{figure}
+        
+        \lipsum[2] \\
+        ------------------------------------------------------------------------------------------------------------------
+        
+        \newpage
+        
+    \section{Conclusão}
+        \lipsum[1] \\
+        ------------------------------------------------------------------------------------------------------------------
+        
+        \newpage
+
+    \pagenumbering{gobble}
+    \bibliographystyle{ieeetr}
+    \bibliography{referencia}
+    \thispagestyle{empty}
+
+\end{document}

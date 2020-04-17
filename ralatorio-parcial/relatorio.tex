@@ -1,0 +1,296 @@
+% Formato do documento
+\documentclass[12pt,twoside]{article}
+
+% Pacotes sendo utilizados
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{bezier}
+\usepackage{latexsym}
+\usepackage{mathrsfs}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{kpfonts}
+\usepackage{cite}
+\usepackage{lipsum}
+\usepackage{enumerate}
+\usepackage{longtable}
+\usepackage{hhline}
+\usepackage[usenames]{color}
+\usepackage{indentfirst}
+\usepackage{newlfont}
+\usepackage[all]{xy}
+\usepackage{setspace}
+\usepackage[nottoc, notindex]{tocbibind}
+\usepackage{pdfpages}
+\usepackage{stmaryrd}
+\usepackage{eso-pic}
+
+% Especificações métricas do texto
+\usepackage{geometry}
+\geometry{
+    a4paper,
+    left=3cm,
+    right=2cm,
+    top=3cm,
+    bottom=2cm
+}
+% Indentação do texto
+\setlength{\parindent}{1.25cm}
+
+% Faz o "content" ser mencionado como "Sumário"
+\renewcommand{\contentsname}{Sumário}
+
+% Criando títulos indexados
+\newtheorem{lema}{Lema}[section]
+\newtheorem{obs}{Observação}[section]
+\newtheorem{teo}{Teorema}[section]
+
+% Início do conteúdo
+\begin{document}
+  \setstretch{1.5} % Espaçamento entre linhas
+  \pagenumbering{gobble} % Cancela a paginação por enquanto
+
+  % Capa do trabalho
+  \begin{titlepage}
+    \begin{center}
+      \parbox{3.5cm}{\includegraphics[scale=0.1]{logo_ufu.png}} \\
+      \vspace{1cm}
+      {\Large \bf UNIVERSIDADE FEDERAL DE UBERLÂNDIA}
+      {\large \bf Bacharelado em Matemática} \\
+      \vspace{2cm}
+      {\large \textbf{Aluno bolsista:} Luís Henrique da Silva Pinheiro} \\
+      {\large \textbf{Orientador:} Prof. Dr. Victor Gonzalo Lopez Neumann} \\
+      \vspace{3cm}
+      {\Large \bf Relatório parcial do trabalho de iniciação científica:} \\
+      {\large \it Elementos primitivos e normais em corpos finitos} \\
+      \vspace{8cm}
+      {UBERLÂNDIA \\ Fevereiro de 2020}
+    \end{center}
+  \end{titlepage}
+
+  \tableofcontents % Cria o sumário
+  \thispagestyle{empty} % Retira o estilo padrão do sumário
+  \newpage % Quebra a página
+
+  \pagenumbering{arabic} % Começa a enumerar as páginas
+
+  % Seção: Introdução ao tema
+  \section{Introdução}
+    % Primeiro parágrafo: Introdução ao assunto
+    A teoria dos corpos finitos é um ramo da matemática que veio a tona nos
+    últimos cinquenta anos por causa de suas diversas aplicações em vários segmentos
+    da ciência, entre eles, análise combinatória, teoria dos códigos, criptografia, entre
+    outros. Muitas figuras proeminentes na história da matemática contribuíram para o
+    desenvolvimento desta teoria, entre eles podemos citar: Pierre de Fermat (1601-
+    1665); Leonhard Euler (1707-1783); Joseph-Louis Lagrange (1736-1813); AndrienMarie Legendre (1752-1833); 
+    entre outros. Além disso, segundo R. Lidil e H.
+    Niederreiter, autores de uma das referências que utilizaremos \cite{finite-fields-1997}, tal teoria começou
+    com os trabalhos de Carl Friedrich Gauss (1777-1855) e Evariste Galois (1811-
+    1832), contudo, só veio a se tornar interessante para os matemáticos aplicados nas
+    últimas décadas. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Não está sendo preciso quebrar página aqui
+
+  % Seção: Conceitos principais
+  \section{Conceitos principais}
+    % Segundo parágrafo: Introdução aos conceitos
+    Para que se possa entender melhor este tema, explicaremos aqui mesmo, de
+    forma breve, o significado destes conceitos. Começamos com a definição de corpo
+    finito, este é qualquer coleção finita e não vazia de elementos, munida de duas
+    operações binárias entre esses elementos, uma que se comporta como a adição, e
+    outra que se comporta como a multiplicação, e quando falamos adição e
+    multiplicação estamos nos referindo àquelas definidas entre números reais. Veremos
+    no decorrer do trabalho, por exemplo, que se retirarmos de um corpo finito, o
+    elemento neutro da adição, os elementos que sobram formam um grupo cíclico com
+    a multiplicação, interessante não? Consequentemente, como todo grupo cíclico, ele
+    passa a ter um gerador deste grupo. Ora, estes elementos, geradores destes grupos
+    assim formados, é exatamente o que chamamos de ``elementos primitivos''. Já a
+    definição de ``elemento normal'' é um pouquinho mais elaborada. Primeiro,
+    começamos com um corpo finito de característica p, com q elementos (q é um
+    natural não nulo). Veremos também que p deverá ser um número natural primo, e
+    que o fato de p ser a característica deste corpo implica que a cardinalidade q deverá
+    ser uma potência de p. Levando isso em conta, escolha um natural não nulo n, e
+    considere uma extensão F de grau n do corpo inicial. Da teoria de corpos finitos
+    sabemos que esta extensão é um corpo que contém o primeiro, e que pode ser visto
+    como um espaço vetorial de dimensão n (finita) sobre ele, é para a base deste
+    espaço que olharemos agora. Um elemento x do corpo F é chamado ``elemento normal'' quando o 
+    conjunto $\{ \ x \ , \ x^{q} \ , \ x^{q^{2}} \ , \ ... \ , \ x^{q^{n-1}} \ \}$ é uma base 
+    para este espaço vetorial, estas bases assim formadas são chamadas bases 
+    normais sobre corpos finitos. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Seção: Relevância
+  \section{Relevância}
+    % Primeiro parágrafo: Relevância
+    O interesse de bases normais sobre corpos finitos decorre tanto da
+    curiosidade puramente matemática quanto das aplicações práticas. Com o
+    desenvolvimento da teoria de codificação e o surgimento de vários sistemas
+    criptográficos utilizando corpos finitos, o trabalho nesta área resultou em vários
+    projetos de implementação de hardware's e software's. Estes produtos são
+    baseados em esquemas de multiplicação usando bases normais para representar
+    corpos finitos, assim é necessário desenvolver uma aritmética de corpos finitos para
+    que se possa construir os algorítimos apropriados. É claro que as vantagens de se
+    utilizar uma representação de base normal são conhecidas há muitos anos. A
+    complexidade do desenho de hardware de tais esquemas de multiplicação é
+    fortemente dependente da escolha das bases normais usadas. Por isso, é essencial
+    encontrar bases normais de baixa complexidade. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Seção: Objetivos
+  \section{Objetivos}
+    % Primeiro parágrafo: Objetivos
+    O objetivo por trás deste trabalho é, em primeiro lugar, permitir que o estudante do curso de
+    bacharelado em matemática, inscrito para realizar este trabalho, através de leitura, reflexão, resolução
+    de exercícios, discussão com orientador e produção de texto lógico formal, se aprofunde no
+    desenvolvimento de suas habilidades de pesquisa e autonomia para se tornar mais apto a seguir
+    carreira acadêmica, já que este é seu intento. E em segundo lugar, mas não menos importante, criar
+    um texto matemático que apresente o tema de forma agradável, apresentando um breve esboço da
+    teoria dos corpos finitos, e mostrando como ela pode ser acessível a estudantes a nível de graduação,
+    e como ela pode ser aplicada para tratar de elementos primitivos e normais. Em terceiro lugar, uma
+    vez que o aluno adquira certa maturidade no tema de estudo, possa colaborar nos projetos nos quais
+    o orientador esteja trabalhando no momento.\\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Seção: Metodologia  
+  \section{Metodologia}
+    % Primeiro parágrafo: Metodologia
+    O aluno estudará a estrutura de corpos finitos, polinômios sobre corpos finitos e somas
+    exponenciais utilizando como referência o texto \cite[Finite fields]{finite-fields-1997} e como livros 
+    de apoio os textos \cite[Abstract algebra]{abstract-algebra-2007} e \cite[Tópicos de álgebra]{topicos-de-algebra-1970}. 
+    O aluno apresentará semanalmente um seminário de uma hora com o material estudado durante a semana.
+    Elementos primitivos e normais serão estudados a partir dos artigos de referências \cite{article-1987}, 
+    \cite{article-2014}, \cite{article-2017} e \cite{article-2018}.
+    Além disso serão realizadas reuniões semanais de uma hora com o orientador para esclarecer dúvidas
+    do aluno. Nos últimos meses da orientação o aluno irá participar dos projetos de pesquisa nos quais
+    o orientador estará trabalhando. Serão também realizadas revisões bibliográficas para acrescentar
+    conhecimentos atualizados. Mensalmente o aluno irá apresentar os resultados básicos a alunos de
+    graduação que estudam temas similares. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Seção: Cronograma  
+  \section{Cronograma}
+    % Lista de capítulos e tópicos
+    \begin{enumerate}
+      \item Estrutura de corpos finitos
+      \begin{description}
+        \item [(a)] Caracterização dos corpos finitos
+        \item [(b)] Raízes de polinômios irredutíveis
+        \item [(c)] Traços, normas e bases
+        \item [(d)] Raízes da unidade e polinômios ciclotômicos
+        \item [(e)] Representação de elementos de corpos finitos
+        \item [(f)] Teorema de Wedderburn
+      \end{description}
+      \item Polinômios sobre corpos finitos
+      \begin{description}
+        \item [(a)] Ordem de polinômios e polinômios primitivos
+        \item [(b)] Polinômios irredutíveis
+        \item [(c)] Construção de polinômios irredutíveis
+        \item [(d)] Polinômios linearizados
+        \item [(e)] Binômios e trinômios
+      \end{description}
+      \item Somas exponenciais
+      \begin{description}
+        \item [(a)] Caracteres
+        \item [(b)] Somas de Gauss
+        \item [(c)] Somas de Jacobi
+        \item [(d)] Soma de caracteres com argumentos polinomiais
+      \end{description}
+      \item Elementos primitivos e normais
+      \begin{description}
+        \item [(a)] Caracterização de elementos primitivos
+        \item [(b)] Número de elementos primitivos em corpos finitos
+        \item [(c)] Ação do anel de polinômios sobre um corpo finito
+        \item [(d)] Caracterização de elementos normais
+        \item [(e)] Número de elementos normais em corpos finitos
+        \item [(f)] Conclusão
+      \end{description}
+    \end{enumerate}
+
+    % Tabela contendo as informações resumidas do cronograma
+    \vspace{0.3cm}
+    \begin{center} % Matem a tabela alinhada ao centro da página
+      \begin{tabular}{ | l | c | c | c | c | r | } % Define o alinhamento e linhas verticais
+        \hline % Linha horizontal
+        Agosto & Setembro & Outubro & Novembro & Dezembro & Janeiro \\
+        \hline % Linha horizontal
+        1. (a)-(c) & 1. (d)-(f) & 2. (a)-(c) & 2. (d),(e) & 3. (a),(b) & 3. (c) \\
+        \hline % Linha horizontal
+        Fevereiro & Março & Abril & Maio & Junho & Julho \\
+        \hline % Linha horizontal
+        3. (d) & 4. (a),(b) & 4. (c) & 4. (d) & 4. (e) & 4. (f) \\
+        \hline % Linha horizontal
+      \end{tabular}
+    \end{center}
+    \vspace{0.3cm}
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Seção: Avanço até aqui  
+  \section{Avanço do trabalho até aqui}
+    % Primeiro parágrafo: Avanço até aqui
+    Até o presente momento o aluno avançou nos estudos seguindo o cronograma proposto, estudou o primeiro capítulo:
+    Estrutura de corpos finitos, dentro do qual viu os tópicos: Caracterização dos corpos finitos, Raízes de polinômios
+    irredutíveis, Traços, normas e bases, Raízes da unidade e polinômios ciclotômicos, Representação de elementos de
+    corpos finitos e Teorema de Wedderburn. E também, o segundo capítulo: Polinômios sobre corpos finitos, onde viu os 
+    tópicos: Ordem de polinômios e polinômios primitivos, Polinômios irredutíveis, Construção de polinômios irredutíveis,
+    Polinômios linearizados e Binômios e trinômios. Tendo cumprido portanto, aproximadamente $ 50\% $ do cronograma, menos do que o planejado porém a tempo de não prejucidá-lo.
+    
+    % Segundo parágrafo: Próximos passos
+    A partir daqui o aluno continuará seguindo com o cronograma, o próximo capítulo a ser estudado será: Somas exponenciais,
+    dentro do qual verá os tópicos: Caracteres, Somas de Gauss, Somas de Jacobi e Soma de caracteres com argumentos
+    polinomiais. Em seguida, verá o capítulo: Elementos primitivos e normais, no qual passará por: Caracterização de
+    elementos primitivos, Número de elementos primitivos em corpos finitos, Ação do anel de polinômios sobre um corpo
+    finito, Caracterização de elementos normais e Número de elementos normais em corpos finitos. E por fim passará para
+    as conclusões do trabalho, reunindo todos os conhecimentos e iniciando uma breve exploração dos artigos citados. \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Seção: Avaliação do aluno  
+  \section{Avaliação do aluno (Com assinatura)}
+    % Primeiro parágrafo: Meu parecer
+    Trabalhar com o professor Victor Gonzalo tem sido ótimo, ele é solícito, mentor e indiscutivelmente idôneo. Até hoje tem me
+    ajudado enormemente nesta árdua tarefa de sanar compulsivamente toneladas de dúvidas. Apesar de estar um pouco atrasado
+    com o cronograma, estou determinantemente convicto de que, com o apoio dele, conseguirei atingir nossos objetivos.
+    
+    \vspace*{1cm} Assinatura do aluno: \ \rule{8cm}{1pt} \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    \newpage % Quebra a página
+
+  % Seção: Avaliação do orientador  
+  \section{Avaliação do orientador (Com assinatura)}
+    % Primeiro parágrafo: Parecer do Gonzalo
+    Luís Henrique é um aluno responsável, trabalhador e com uma boa intuição matemática. Ele desenvolveu de forma 
+    notável seus estudos no conteúdo do presente trabalho. Assim, as expectativas para o decorrer do estudo são ótimas, 
+    a tendência é que a produtividade do aluno só aumente. 
+    
+    \vspace*{1cm} Assinatura do orientador: \ \rule{8cm}{1pt} \\
+    %------------------------------------------------------------------------------------------------------------------
+    
+    %\newpage % Quebra a página
+
+  % Página de referências
+  \pagenumbering{gobble} % Aborta a paginação
+  \bibliographystyle{ieeetr} % Configura a forma como vai aparecer as referências
+  \bibliography{referencia} % Acessa o arquivo remoto referencia.bib
+  \thispagestyle{empty} % Elimina estilo padrão da página de referências
+
+\end{document}
